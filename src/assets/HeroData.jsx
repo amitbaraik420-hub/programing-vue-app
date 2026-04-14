@@ -1,0 +1,28 @@
+import React, { use } from 'react'
+import CardData from './CardData'
+import { Link } from 'react-router-dom'
+
+export default function HeroData({DataPromise}) {
+    const PromiseData = use(DataPromise)
+    // console.log(PromiseData)
+  return (
+    <>
+   
+    <h1 className='font-bold p-10 relative -mx-7'>Your Friends</h1>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3  w-[1250px] mx-auto'>
+      
+         {
+            PromiseData.map((Prom) => (
+            <Link key={Prom.id} to={`/chemistry/${Prom.id}`}>
+                        <CardData  Prom={Prom}></CardData>
+            </Link>
+           ))
+         }   
+       
+
+    </div>
+
+    
+    </>
+  )
+}
