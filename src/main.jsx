@@ -7,21 +7,33 @@ import Hero from './assets/hero';
 import Program from './assets/program';
 import Physics from './assets/physics';
 import Chemistry from './chemistry';
-
-    let router = createBrowserRouter([
+import Status from './assets/status';
+let router = createBrowserRouter([
 
   {
     path:"/",
     element:<Hero></Hero>,
     children:[
-         {path:"/timeline",element:<Physics></Physics>},
+       
          {path:"/",element:<Program></Program>},
          {path:'/chemistry/:id',
           element:<Chemistry></Chemistry>,
-          loader: () => fetch("/Data.json").then(res => res.json())
+          loader: async () => {
+          const response = await fetch("/Data.json");
+          return response.json();
+          }
         },
-       
-    ]
+        {
+          path: "/timeline",
+          element: <Physics />,
+          loader: async () => {
+          const response = await fetch("/Data.json");
+          return response.json();
+          }
+        },
+        {path:"/status",
+        element:<Status></Status>}
+        ],
   },
 
 ]);

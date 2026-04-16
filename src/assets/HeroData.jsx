@@ -8,8 +8,8 @@ export default function HeroData({DataPromise}) {
   return (
     <>
    
-    <h1 className='font-bold p-10 relative -mx-7'>Your Friends</h1>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3  w-[1250px] mx-auto'>
+    <h1 className='font-bold text-center p-8 relative '>Your Friends</h1>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3  with-full mx-auto justify-items-center'>
       
          {
             PromiseData.map((Prom) => (

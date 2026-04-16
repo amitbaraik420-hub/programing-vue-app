@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useLoaderData, useParams } from 'react-router-dom'
 import { FaBeer } from "react-icons/fa";
 import { FaPhoneAlt } from 'react-icons/fa';
@@ -6,18 +6,29 @@ import { MdVideoCall } from 'react-icons/md';
 import {FaTrashAlt} from "react-icons/fa"
 import { FaArchive } from 'react-icons/fa';
 import { MdSnooze } from 'react-icons/md';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './index.css';
 
 export default function Chemistry() {
      const {id} = useParams();
      const Data = useLoaderData();
-    //  console.log(id ,"id")
-    //  console.log(Data,"Data")
+ 
     const UseData = Data.find(( data) => String(data.id) === String(id));
     console.log(UseData)
+       const handleActivity = (type) => {
+    const newEntry = {
+        name: UseData?.name || "Unknown",
+        action: type,
+        date: new Date().toLocaleDateString('en-GB', { 
+            weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' 
+        })
+    };
+    const oldData = JSON.parse(localStorage.getItem('my_timeline') || '[]');
+    localStorage.setItem('my_timeline', JSON.stringify([newEntry, ...oldData]));
+};
   return (
-    <div className='flex gap-3 py-10'>
-
-   
+    <div className='flex gap-3 py-10 contaner'>
     <div>
         
         <div  className='w-70 h-90 mx-[40px] p-4 border-1 rounded-md'>
@@ -49,7 +60,7 @@ export default function Chemistry() {
 
 
          <div className=''>
-                <div className='grid grid-cols-3 grid-rows-3 gap-3'>
+                <div className='grid grid-cols-3 grid-rows-3 gap-3 '>
                   <div className='border-1 p-3 rounded-md'>
                     <p>{UseData?.days_since_contac}</p>
                     <p>Day Since Contact</p>
@@ -67,22 +78,22 @@ export default function Chemistry() {
                     <p>Relationship Goal <br></br> connect every {UseData?.goal}</p>
                      <button className='btn '>Edit</button>
                   </div>
-                  <div className='border-1 col-span-3'>
+                  <div  className='border-1 col-span-3'>
                     <p className='font-bold p-2'>Quick Check-in</p>
-                      <div className='grid grid-cols-3 grid-rows-1 flex justify-center items-center gap-2 '>
-                         <div className='p-4  btn'>
+                      <Link to='/timeline' className='grid grid-cols-3 grid-rows-1 flex justify-center items-center gap-2 '>
+                         <div className='p-4 btn '>
                            <FaPhoneAlt className='mx-1'></FaPhoneAlt>
-                          <p>Call</p>
+                          <p onClick={() => handleActivity('call')}>Call</p>
                          </div>
-                         <div className='p-4 btn'>
+                        <div  className='p-4 btn '>
                               <FaBeer className='mx-2' />
-                          <p>Text</p>
+                          <p onClick={() => handleActivity('Text')}>Text</p>
                          </div>
-                         <div className='p-4 btn'>
+                         <div  className='p-4 btn '>
                           <MdVideoCall className='mx-3'></MdVideoCall>
-                          <p>Video</p>
+                          <p onClick={() => handleActivity("Video")}>Video</p>
                          </div>
-                      </div>
+                      </Link>
                   </div>
                 </div>
 

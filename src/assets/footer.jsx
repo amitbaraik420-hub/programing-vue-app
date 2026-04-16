@@ -23,7 +23,7 @@ export default function Footer() {
            </div>
       </div>
 
-      <div className='flex justify-between w-[1200px] mx-auto'>
+      <div className='flex justify-between w-full mx-auto items-center p-2'>
         <p className='text-gray-400'>2026 KeenKeeper.All rights reserved.</p>
         <div className='grid grid-rows-1 grid-cols-3 gap-3 p-4'>
             <div className='text-gray-400'>Privacy</div>

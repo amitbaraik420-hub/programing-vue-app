@@ -31,11 +31,13 @@ export default function Navbar() {
         <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       <li><NavLink to="/" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>Dashboard</NavLink></li>
-      <li>
-        <NavLink to="/timeline" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>TimeLine</NavLink>
+      
+      <li><NavLink to='/timeline' className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>TimeLine</NavLink>
       </li>
-      <li><NavLink to='/stats/:id' className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>Stats</NavLink></li>
-    
+      <li>
+        <NavLink to="/status" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>status</NavLink>
+      </li>
+     
     </ul>
   </div>
   </div>
