@@ -8,6 +8,7 @@ import { FaArchive } from 'react-icons/fa';
 import { MdSnooze } from 'react-icons/md';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import{ toast } from 'react-toastify'
 import './index.css';
 
 export default function Chemistry() {
@@ -83,31 +84,31 @@ export default function Chemistry() {
                       <Link to='/timeline' className='grid grid-cols-3 grid-rows-1 flex justify-center items-center gap-2 '>
                          <div className='p-4 btn '>
                            <FaPhoneAlt className='mx-1'></FaPhoneAlt>
-                          <p onClick={() => handleActivity('call')}>Call</p>
+                          <p onClick={() => { 
+                              toast.success("Calling ID clicked...."); 
+                              handleActivity('call'); 
+                               }}>Call</p>
                          </div>
                         <div  className='p-4 btn '>
                               <FaBeer className='mx-2' />
-                          <p onClick={() => handleActivity('Text')}>Text</p>
+                                   <p onClick={() => { 
+                                         toast.success("Messaging is clicked....."); 
+                                           handleActivity('Text'); 
+                                        }}>Text</p>
                          </div>
                          <div  className='p-4 btn '>
                           <MdVideoCall className='mx-3'></MdVideoCall>
-                          <p onClick={() => handleActivity("Video")}>Video</p>
+                           <p onClick={() => { 
+                                  toast.success("Video is clicked"); 
+                                  handleActivity('Video'); 
+                               }}>Video</p>
                          </div>
                       </Link>
                   </div>
                 </div>
+                </div>
 
-
-         </div>
-
-
-
-
-
-
-
-
-        </div>
+            </div>
 
   )
 }

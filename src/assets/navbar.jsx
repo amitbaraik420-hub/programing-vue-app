@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LogImg from "./amit/src/assets copy/logo.png"
+import { LuLayoutDashboard } from "react-icons/lu";
+import { LuHistory } from "react-icons/lu";
+import { LuVideo } from "react-icons/lu";
 export default function Navbar() {
   return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -30,12 +33,25 @@ export default function Navbar() {
   <div className="navbar-end">
         <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><NavLink to="/" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>Dashboard</NavLink></li>
       
-      <li><NavLink to='/timeline' className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>TimeLine</NavLink>
+      <li>
+        
+        <NavLink to="/" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>
+              <LuLayoutDashboard size={20} />
+         <span>Dashboard</span>
+      </NavLink></li>
+      
+      <li><NavLink to='/timeline' className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>
+        <LuHistory size={20}></LuHistory>
+           <span> TimeLine</span>
+      </NavLink>
       </li>
       <li>
-        <NavLink to="/status" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>status</NavLink>
+        <NavLink to="/status" className={({ isActive }) => `btn ${isActive ? 'text-green-400 border-blue-400' : ''}`}>
+         <LuVideo size={20}></LuVideo>
+         <span>status</span>
+        
+        </NavLink>
       </li>
      
     </ul>
